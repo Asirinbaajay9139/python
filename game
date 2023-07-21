@@ -1,0 +1,29 @@
+import random
+
+def draw_car(position):
+    car = "🚗"
+    road = "🚧"
+    empty = " "
+    obstacles = [empty] * 10
+    obstacles[position] = car
+    road_with_obstacles = f"{road}{''.join(obstacles)}{road}"
+    print(road_with_obstacles)
+
+def main():
+    car_position = 4
+    while True:
+        draw_car(car_position)
+        command = input("Type 'a' to move left, 'd' to move right, or 'q' to quit: ")
+        
+        if command == 'q':
+            print("Thanks for playing! Exiting the game.")
+            break
+        elif command == 'a':
+            car_position = max(0, car_position - 1)
+        elif command == 'd':
+            car_position = min(9, car_position + 1)
+        else:
+            print("Invalid input. Please try again.")
+
+if __name__ == "__main__":
+    main()
